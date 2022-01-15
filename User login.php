@@ -10,18 +10,18 @@ function yair_elementor_form_login($record,$ajax_handler)
   }
   $form_data = $record->get_formatted_data();
     
-	$email = $form_data['email'];
-	$password = $form_data['password'];
-	$remember = $form_data['remember'];
+  $email = $form_data['email'];
+  $password = $form_data['password'];
+  $remember = $form_data['remember'];
 	
-	$login_data = array();
-	$login_data['user_login'] = $email;
-    $login_data['user_password'] = $password;
-    $login_data['remember'] = $remember;
+  $login_data = array();
+  $login_data['user_login'] = $email;
+  $login_data['user_password'] = $password;
+  $login_data['remember'] = $remember;
 	
-	$user = wp_signon( $login_data, false );
+  $user = wp_signon( $login_data, false );
 	
-	if ( is_wp_error( $user ) ){ 
+  if ( is_wp_error( $user ) ){ 
       $ajax_handler->add_error_message( $user->get_error_message() ); 
       $ajax_handler->is_success = false;
       return;
