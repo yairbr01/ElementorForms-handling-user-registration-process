@@ -28,7 +28,7 @@ function yair_elementor_form_resrt_password($record,$ajax_handler)
   }  
   
   if ( $new_pass_1 != $new_pass_2 ) {    
-    $ajax_handler->add_error_message( 'The passwords do not match' ); 
+    	$ajax_handler->add_error_message( 'The passwords do not match' ); 
         $ajax_handler->is_success = false;
         return;      
   }
