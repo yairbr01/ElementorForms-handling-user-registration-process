@@ -14,7 +14,7 @@ In order for all the functions to work properly the parts on the site must be cr
 
 1. At the beginning of each function there is a condition that checks the name of the form. Make sure the name of the form is exactly as it says in the function.
 2. 2 custom fields should be added to the user settings (with ACF or any other plugin), one "text" field named "user_confirm_code". and a second "select" field named "user_confirm_status" with 2 values, one "not_verified" and the other "verified".
-3. Create 2 pages, one for password recovery and the other for password reset.
+3. Create 2 pages, one for password recovery and the other for password reset (make sure the password reset page address is "reset-password").
 
 
 The functions extract the data from the fields according to the names of the fields, note the field names in the functions.
