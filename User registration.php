@@ -18,38 +18,38 @@ function yair_elementor_rgistration_form($record,$ajax_handler)
         return;
     }
 	
-	$password = $form_data['password'];
-	$password_confirm = $form_data['password_confirm'];	
+  $password = $form_data['password'];
+  $password_confirm = $form_data['password_confirm'];	
   //Check if the 2 passwords match
-	if ( $password !== $password_confirm ){ 
+  if ( $password !== $password_confirm ){ 
         $ajax_handler->add_error_message("הסיסמאות אינן תואמות"); 
         $ajax_handler->is_success = false;
-        return;
-    }	
+  	return;
+  }	
 	
-	$user_data = array(
-		'user_pass' => $password,
-		'user_login' => $email,
-		'role' => get_option('default_role'),
-		'user_email' => $email,
-		'show_admin_bar_front' => 'false'
-	);
-	$user_id = wp_insert_user( $user_data );
+  $user_data = array(
+  	'user_pass' => $password,
+  	'user_login' => $email,
+  	'role' => get_option('default_role'),
+  	'user_email' => $email,
+  	'show_admin_bar_front' => 'false'
+  );
+  $user_id = wp_insert_user( $user_data );
 	
-	$confirm_code = wp_rand(111111, 999999);
+  $confirm_code = wp_rand(111111, 999999);
 	
-	update_user_meta( $user_id, 'user_confirm_code', $confirm_code );
-	update_user_meta( $user_id, 'user_confirm_status', 'not_verified' );
+  update_user_meta( $user_id, 'user_confirm_code', $confirm_code );
+  update_user_meta( $user_id, 'user_confirm_status', 'not_verified' );
 		
   //Call the html file that contains the design code for the email message  
 	$html_email_template_file = get_stylesheet_directory_uri().'/html/user_confirm_email_template.html';
   $message = file_get_contents($html_email_template_file);
   $subject = "Please verify your account";
-	$headers = 'From: '. "no_reply@example.com" . "\r\n" .
-		'Reply-To: ' . "no_reply@example.com" . "\r\n";
+  $headers = 'From: '. "no_reply@example.com" . "\r\n" .
+  	'Reply-To: ' . "no_reply@example.com" . "\r\n";
 	
   //Replace the content of the file with post meat filds
   $message = str_replace('code_to_replace', $confirm_code, $message);
 	
-	$sent = wp_mail($email, $subject, $message, $headers);	
+  $sent = wp_mail($email, $subject, $message, $headers);	
 }
