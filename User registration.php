@@ -41,15 +41,10 @@ function yair_elementor_rgistration_form($record,$ajax_handler)
   update_user_meta( $user_id, 'user_confirm_code', $confirm_code );
   update_user_meta( $user_id, 'user_confirm_status', 'not_verified' );
 		
-  //Call the html file that contains the design code for the email message  
-	$html_email_template_file = get_stylesheet_directory_uri().'/html/user_confirm_email_template.html';
-  $message = file_get_contents($html_email_template_file);
+  $message = $confirm_code
   $subject = "Please verify your account";
   $headers = 'From: '. "no_reply@example.com" . "\r\n" .
   	'Reply-To: ' . "no_reply@example.com" . "\r\n";
-	
-  //Replace the content of the file with post meat filds
-  $message = str_replace('code_to_replace', $confirm_code, $message);
 	
   $sent = wp_mail($email, $subject, $message, $headers);	
 }
