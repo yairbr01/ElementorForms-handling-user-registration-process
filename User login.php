@@ -31,8 +31,8 @@ function yair_elementor_form_login($record,$ajax_handler)
       if ($user_confirm_status == 'not_verified') {			
           $link_user_confirm = "https://dirave.co.il/user_confirm/?email=".$email;
           $ajax_handler->add_error_message("כתובת האימייל אינה מאומתת, אנא אמת את כתובת האימייל ונסה שוב <a href='".$link_user_confirm."'>לאימות לחץ כאן</a>"); 
-        	$ajax_handler->is_success = false;
-        	return;			
+  	  $ajax_handler->is_success = false;
+	  return;			
   }
 		
   wp_clear_auth_cookie();
