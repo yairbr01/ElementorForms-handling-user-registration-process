@@ -1,4 +1,4 @@
-# Wordpress-Elementor-handling-registration-and-login--and-user-authentication
+# Wordpress & Elementor - handling registration, login, user authentication and password resrt
 PHP functions for registering and logging users to WordPress sites using Elementor Pro, including user authentication after registration.
 
 Using the functions located in this repository you can handle the whole part of registering users for the site.
