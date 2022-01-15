@@ -9,18 +9,18 @@ function yair_elementor_form_lost_password($record,$ajax_handler)
       return;
   }
   $form_data = $record->get_formatted_data();
-	$email = $form_data['email'];
-	$user_data = get_user_by( 'email', $email );
+  $email = $form_data['email'];
+  $user_data = get_user_by( 'email', $email );
 
-	$errors = retrieve_password( $user_data->user_login );
+  $errors = retrieve_password( $user_data->user_login );
 	
-	if ( is_wp_error( $errors ) ) {		
+  if ( is_wp_error( $errors ) ) {		
       $ajax_handler->add_error_message( $errors->get_error_message() ); 
       $ajax_handler->is_success = false;
       return;		
-	} else {
+  } else {
       $ajax_handler->is_success = true;
-	}	
+  }	
 }
 
 
@@ -28,7 +28,7 @@ add_filter("retrieve_password_message", "custom_password_reset", 99, 4);
 
 function custom_password_reset($message, $key, $user_login, $user_data )    {
 
-	$message = "
+  $message = "
 	Hey,
   
 	We have received your request to reset your account password.
